@@ -12,7 +12,9 @@ const corsOptions = {
   origin: [
     "http://localhost:3000", 
     "https://anreitan.github.io", 
-    "https://nfreg-backend-1n1icp7zw-andre-reitans-projects.vercel.app"
+    "https://anreitan.github.io/nfreg", 
+    "https://https://nfreg-backend.vercel.app/",
+    "https://nfreg-backend.vercel.app/"
   ],
   methods: "GET,POST,PUT,DELETE,OPTIONS",
   allowedHeaders: ["Content-Type", "Authorization"]
@@ -69,7 +71,7 @@ app.get('/api/users', (req, res) => {
     res.json(results);
   });
 });
-
+nm
 
 // API Endpoint to get one user
 app.get("/api/user/:userID", (req, res) => {
