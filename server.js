@@ -43,6 +43,18 @@ connection.connect((err) => {
 
 // API Endpoint to get users
 
+/* old code
+app.get('/api/users', (req, res) => {
+  db.query('SELECT p_key, s_name, i_userlevel FROM d_user', (err, results) => {
+    if (err) {
+      console.error('Error executing query:', err.message);
+      res.status(500).json({ error: 'Database query error' });
+      return;
+    }
+    res.json(results);
+  });
+});
+*/
 
 app.get('/api/users', (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // ✅ Allow all origins
