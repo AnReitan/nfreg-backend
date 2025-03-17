@@ -8,7 +8,7 @@ const db = require('./config/db.js'); // Import db.js correctly
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-/*
+
 app.use(cors({
   origin: ["http://localhost:3000", 
           "https://nfreg-backend-1n1icp7zw-andre-reitans-projects.vercel.app/", 
@@ -16,9 +16,9 @@ app.use(cors({
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
-*/
 
-app.use(cors());
+
+// app.use(cors());
 
 app.use(express.json());
 
