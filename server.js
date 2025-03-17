@@ -1,4 +1,3 @@
-
 require('dotenv').config();
 const express = require('express');
 const mysql = require('mysql');
@@ -8,26 +7,28 @@ const db = require('./config/db.js'); // Import db.js correctly
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// ✅ Proper CORS configuration
+const corsOptions = {
+  origin: [
+    "http://localhost:3000", 
+    "https://anreitan.github.io", 
+    "https://nfreg-backend-1n1icp7zw-andre-reitans-projects.vercel.app"
+  ],
+  methods: "GET,POST,PUT,DELETE,OPTIONS",
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
 
-app.use(cors({
-  origin: ["http://localhost:3000", 
-          "https://nfreg-backend-1n1icp7zw-andre-reitans-projects.vercel.app/", 
-          "https://anreitan.github.io"],  // ✅ Add your GitHub Pages URL here"
-          methods: "GET,POST,PUT,DELETE",
-          allowedHeaders: "Content-Type,Authorization"
-      }));
+// ✅ Apply CORS middleware before routes
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
 
-
-// app.use(cors());
-
+// ✅ Parse JSON requests
 app.use(express.json());
 
-// Create a MySQL connection
+// ✅ Ensure database connection is set up properly
 const connection = mysql.createConnection(db);
-console.log("DB config: ", db);
 
-// Connect to MySQL (ONLY HERE)1
-db.connect((err) => {
+connection.connect((err) => {
   if (err) {
     console.error("Database connection failed:", err.message);
     return;
