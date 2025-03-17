@@ -12,10 +12,10 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({
   origin: ["http://localhost:3000", 
           "https://nfreg-backend-1n1icp7zw-andre-reitans-projects.vercel.app/", 
-          "https://anreitan.github.io/nfreg/"  // ✅ Add your GitHub Pages URL here"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
-  credentials: true
-}));
+          "https://anreitan.github.io"],  // ✅ Add your GitHub Pages URL here"
+          methods: "GET,POST,PUT,DELETE",
+          allowedHeaders: "Content-Type,Authorization"
+      }));
 
 
 // app.use(cors());
