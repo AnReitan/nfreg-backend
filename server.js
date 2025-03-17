@@ -42,16 +42,22 @@ connection.connect((err) => {
 /// API enpoints ////
 
 // API Endpoint to get users
+
+
 app.get('/api/users', (req, res) => {
-  db.query('SELECT p_key, s_name, i_userlevel FROM d_user', (err, results) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // ✅ Allow all origins
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  connection.query('SELECT p_key, s_name, i_userlevel FROM d_user', (err, results) => {
     if (err) {
       console.error('Error executing query:', err.message);
-      res.status(500).json({ error: 'Database query error' });
-      return;
+      return res.status(500).json({ error: 'Database query error' });
     }
     res.json(results);
   });
 });
+
 
 // API Endpoint to get one user
 app.get("/api/user/:userID", (req, res) => {
